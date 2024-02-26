@@ -1,0 +1,48 @@
+import java.io.*;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.StringTokenizer;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        Deque<Integer> deque = new ArrayDeque<>();
+        int n = Integer.parseInt(br.readLine());
+        for (int i = 0; i < n; i++) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            int cmd = Integer.parseInt(st.nextToken());
+            switch (cmd) {
+                case 1:
+                    deque.addLast(Integer.parseInt(st.nextToken()));
+                    break;
+                case 2:
+                    if (deque.isEmpty()) {
+                        bw.write(-1 + "\n");
+                    } else {
+                        bw.write(deque.pollLast() + "\n");
+                    }
+                    break;
+                case 3:
+                    bw.write(deque.size() + "\n");
+                    break;
+                case 4:
+                    if (deque.isEmpty()) {
+                        bw.write(1 + "\n");
+                    } else {
+                        bw.write(0 + "\n");
+                    }
+                    break;
+                case 5:
+                    if (deque.isEmpty()) {
+                        bw.write(-1 + "\n");
+                    } else {
+                        bw.write(deque.peekLast() + "\n");
+                    }
+                    break;
+            }
+        }
+        bw.flush();
+        bw.close();
+    }
+}
