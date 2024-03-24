@@ -12,33 +12,30 @@ public class Main {
         n = Integer.parseInt(br.readLine());
         board = new int[n];
 
-        for (int i = 0; i < n; i++) {
-            queen(0, i);
-        }
+        queen(0);
 
         System.out.println(cnt);
     }
 
-    static void queen(int x, int y) {
-        if (canCatch(x, y)) {
-            return;
-        }
-        if (x == n - 1) {
+    static void queen(int x) {
+        if (x == n) {
             cnt++;
             return;
         }
-        board[x] = y;
         for (int i = 0; i < n; i++) {
-            queen(x + 1, i);
+            board[x] = i;
+            if (check(x)) {
+                queen(x + 1);
+            }
         }
     }
 
-    static boolean canCatch(int x, int y) {
+    static boolean check(int x) {
         for (int i = 0; i < x; i++) {
-            if (y == board[i] || Math.abs(x - i) == Math.abs(y - board[i])) {
-                return true;
+            if (board[x] == board[i] || Math.abs(x - i) == Math.abs(board[x] - board[i])) {
+                return false;
             }
         }
-        return false;
+        return true;
     }
 }
