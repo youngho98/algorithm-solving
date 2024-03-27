@@ -61,8 +61,8 @@ public class Solution {
 		return find(parent[x]);
 	}
 	
-	static boolean unionFind(int a, int b) {
-		if (find(a) == find(b)) {
+	static boolean unionFind(int x, int y) {
+		if (find(x) == find(y)) {
 			return true;
 		}
 		return false;
