@@ -18,6 +18,10 @@ bool div();
 bool mod();
 
 int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
 	string s;
 	vector<string> cmd;
 	bool command = true;
