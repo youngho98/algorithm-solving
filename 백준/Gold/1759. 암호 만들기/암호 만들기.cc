@@ -62,6 +62,5 @@ void recur(int dept, int idx, int check) {
 
 	for (int i = idx; i < c; i++) {
 		recur(dept + 1, i + 1, check + (1 << i));
-		recur(dept + 1, i + 1, check);
 	}
 }
