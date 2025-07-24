@@ -14,18 +14,18 @@ int main() {
 	if (z >= 99) {
 		cout << -1;
 	} else {
-		long long start = 0;
-		long long end = x;
-		while (start < end) {
-			long long mid = (start + end) / 2;
+		long long lo = 0;
+		long long hi = x;
+		while (lo + 1 < hi) {
+			long long mid = (lo + hi) / 2;
 			long long new_z = ((y + mid) * 100) / (x + mid);
 			if (new_z < z + 1) {
-				start = mid + 1;
+				lo = mid;
 			} else {
-				end = mid;
+				hi = mid;
 			}
 		}
-		cout << start;
+		cout << hi;
 	}
 
 	return 0;
