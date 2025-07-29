@@ -13,10 +13,11 @@ struct Player {
 	}
 };
 
-int find_sum(int idx);
+int check(int skill);
 void update_tree(int idx);
+int find_sum(int start, int end);
 
-int n;
+int n, tree_depth;
 int* tree;
 
 int main() {
@@ -38,36 +39,58 @@ int main() {
 	sort(players.begin(), players.end(), [](auto o1, auto o2) {return o1.skill < o2.skill; });
 
 	for (int i = 0; i < n; i++) {
-		players[i].skill = i + 1;
+		players[i].skill = i;
 	}
 
 	sort(players.begin(), players.end(), [](auto o1, auto o2) {return o1.idx < o2.idx; });
 
-	// 펜윅 트리
-	tree = new int[n + 1];
-	fill_n(tree, n + 1, 0);
+	// 세그먼트 트리
+	tree_depth = 0;
+	while (true) {
+		if ((1 << tree_depth) >= n) {
+			break;
+		}
+		tree_depth++;
+	}
+
+	tree = new int[1 << (tree_depth + 1)];
+	fill_n(tree, 1 << (tree_depth + 1), 0);
 
 	for (int i = 0; i < n; i++) {
-		int skill = players[i].skill;
-		cout << i + 1 - find_sum(skill) << "\n";
-		update_tree(skill);
+		cout << check(players[i].skill) << "\n";
 	}
 
 	return 0;
 }
 
-int find_sum(int idx) {
-	int sum = 0;
-	while (idx > 0) {
-		sum += tree[idx];
-		idx -= (idx & -idx);
-	}
-	return sum;
+int check(int skill) {
+	update_tree(skill);
+	return find_sum(skill, n - 1);
 }
 
 void update_tree(int idx) {
-	while (idx <= n) {
+	idx += 1 << tree_depth;
+	while (idx > 0) {
 		tree[idx]++;
-		idx += (idx & -idx);
+		idx >>= 1;
 	}
+}
+
+int find_sum(int start, int end) {
+	start += 1 << tree_depth;
+	end += 1 << tree_depth;
+	int sum = 0;
+	while (start <= end) {
+		if ((start & 1) == 1) {
+			sum += tree[start];
+			start++;
+		}
+		if ((end & 1) == 0) {
+			sum += tree[end];
+			end--;
+		}
+		start >>= 1;
+		end >>= 1;
+	}
+	return sum;
 }
