@@ -24,7 +24,7 @@ int main() {
 		while (!dq.empty() && dq.back().first > arr[i]) {
 			dq.pop_back();
 		}
-		dq.push_back(make_pair(arr[i], i));
+		dq.push_back(pair(arr[i], i));
 		cout << dq.front().first << " ";
 	}
 
