@@ -4,15 +4,15 @@
 
 ### 성능 요약
 
-메모리: 31120 KB, 시간: 56 ms
+메모리: 14428 KB, 시간: 104 ms
 
 ### 분류
 
-브루트포스 알고리즘, 자료 구조, 스택
+구현, 자료 구조, 브루트포스 알고리즘, 스택
 
 ### 제출 일자
 
-2023년 10월 20일 17:39:05
+2026년 2월 3일 14:44:48
 
 ### 문제 설명
 
@@ -28,7 +28,7 @@
 
 <p>그림 1은 창고를 옆에서 본 모습을 그린 것이다. 이 그림에서 굵은 선으로 표시된 부분이 지붕에 해당되고, 지붕과 땅으로 둘러싸인 다각형이 창고를 옆에서 본 모습이다. 이 다각형을 창고 다각형이라고 하자.</p>
 
-<p style="text-align: center;"><img alt="" src="" style="height:331px; width:483px"></p>
+<p style="text-align: center;"><img alt="" src="https://www.acmicpc.net/JudgeOnline/upload/201011/cd.png" style="height:331px; width:483px"></p>
 
 <p style="text-align: center;">그림1 . 기둥과 지붕(굵은 선)의 예</p>
 
