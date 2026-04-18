@@ -1,6 +1,6 @@
 class Solution {
     
-    var answer = -1
+    var answer = 0
     
     fun solution(k: Int, dungeons: Array<IntArray>): Int {
         explore(k, 0, dungeons, 0)
